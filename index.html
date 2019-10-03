@@ -1,0 +1,84 @@
+<html>
+<header>
+    <title>
+        OPoint
+    </title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-size: 4em;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle
+        }
+
+        .box {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site__title {
+            color: #f35626;
+            background-image: linear-gradient(92deg, #f35626 0%, #feab3a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* -webkit-text-fill-color: transparent; */
+            animation: hue 30s infinite linear;
+            margin: 0px;
+        }
+
+        @keyframes hue {
+            from {
+                filter: hue-rotate(0deg);
+            }
+
+            to {
+                filter: hue-rotate(-360deg);
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</header>
+
+<body class="box">
+    <div id="app" class="site__title">
+        <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft " leave-active-class="animated bounceOutRight">
+            <p v-if="show" v-html="message">hello</p>
+        </transition>
+    </div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '你好，我是<br>·',
+            show:false
+        }
+    })
+    var message = [
+        '\<·\>',
+        '起<br>•',
+        'OPoint',
+        'OriginPoint',
+        '源 点'
+    ]
+    var index = 0;
+    var timeout = 3000
+    setInterval(function () {
+        app.show = false
+        setTimeout(function () {
+            app.show = true
+            app.message = message[index++]
+            if (message.length <= index) {
+                index = 0
+            }
+        }, 800)
+    }, timeout)
+    app.show = true
+</script>
+
+</html>

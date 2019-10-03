@@ -10,7 +10,8 @@
             font-size: 4em;
             text-align: center;
             display: table-cell;
-            vertical-align: middle
+            vertical-align: middle;
+            font-family: AlibabaSans-Light
         }
 
         .box {
@@ -39,13 +40,19 @@
                 filter: hue-rotate(-360deg);
             }
         }
+        @font-face {
+            font-family: 'AlibabaSans-Light';
+            src: local('fonts/AlibabaSans-Light'),
+                url('fonts/AlibabaSans-Light.otf') format('truetype');
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </header>
 
 <body class="box">
     <div id="app" class="site__title">
-        <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft " leave-active-class="animated bounceOutRight">
+        <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft "
+            leave-active-class="animated bounceOutRight">
             <p v-if="show" v-html="message">hello</p>
         </transition>
     </div>
@@ -56,7 +63,7 @@
         el: '#app',
         data: {
             message: '你好，我是<br>·',
-            show:false
+            show: false
         }
     })
     var message = [
